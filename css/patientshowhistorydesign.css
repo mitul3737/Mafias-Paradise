@@ -1,0 +1,168 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.dashboard-container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 18%;
+    min-height: 100vh;
+    background-color: #10446bf3;
+    color: #ffffff;
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 10px;
+}
+
+.sidebar li {
+    margin-bottom: 15px;
+}
+
+
+.logout-form {
+    
+    text-align: center;
+    
+}
+.logout-form input[type="submit"] {
+    background-color: #f44336;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+.logout-form input[type="submit"]:hover {
+    background-color: #d32f2f;
+    transform: scale(1.05);
+}
+
+.content {
+    width: 82%;
+    padding: 20px;
+    background-color: #bab6b6;
+    box-sizing: border-box;
+    
+}
+
+.content h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #275a0e;
+    color: #ffffff;
+}
+
+tr:nth-child(even) {
+    background-color: #cbd0c2;
+}
+tr:nth-child(odd) {
+    background-color: #cddab6;
+}
+
+button a {
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+button  {
+    background-color: #0b5f82;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+button:hover {
+    background-color: #194812;
+}
+
+
+.sidebar-button {
+    width: 100%;
+    border: none;
+    background-color: #295583;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.content-btn {
+    background-color: #1d6482;
+    color: #fff;
+    font-size: 16px;
+}
+
+.content-btn:hover {
+    background-color: #c1290f;
+}
+
+
+.sidebar-button.book-now.book-appointment{
+    background-color: #4b727b;
+    font-size: 12px;
+}
+.sidebar-button.book-now.book-test {
+    background-color: #4b727b;
+    font-size: 12px;
+}
+
+.sidebar-button.book-now.book-appointment:hover {
+    background-color: #177627;
+}
+.sidebar-button.book-now.book-test:hover {
+    background-color: #177627;
+}
+
+
+
+
+.content h1 {
+    background-color: #A9A9A9;
+    color: #fff;
+    padding: 20px;
+    margin: 0;
+}

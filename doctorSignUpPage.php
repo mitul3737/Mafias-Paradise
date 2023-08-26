@@ -11,7 +11,7 @@
     <style>
         .top-head {
             background-color: #10446bf3;
-            color: #fff;
+           
             padding: 20px;
             margin: 0;
             width: 100%
@@ -23,12 +23,12 @@
             align-content: space-between;
 
         }
-         .flex-cont2{
+         h1{
             display: flex;
             width: 100%;
             flex-wrap: wrap;
             align-content: space-between;
-            background-color: #10446bf3;
+            background-color: #6e7574;
             color: #fff;
             padding: 10px;
             margin: 0;
@@ -37,9 +37,9 @@
     </style>    
 </head>
 <body>
-    <div class = "flex-cont2">
-        <h1> SIGN UP</h1>
-    </div>    
+    
+    
+     
 <?php
     session_start();
     require_once('hospitaldb_connect.php');
@@ -50,7 +50,7 @@
     }
 ?>
     <div class = "flex-cont">
-        
+        <div class="page-wrappers login-body full-row bg-gray">
             <div class="login-wrapper">
                 <div class="container">
                     <div class="loginbox">
@@ -99,9 +99,10 @@
                                         <br/>
                                         <button type="button" class="btn btn-success"><input type="submit" value="Register"  class="btn btn-success"></button>
 
+                                    </div> 
 
                                     </form>  
-                                </div>                                     </div>       
+                                </div>                                          
                             </div>
                         </div>
                     </div>

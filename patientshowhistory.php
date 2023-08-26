@@ -20,6 +20,11 @@
 
     $p_name = $_SESSION['p_name'];
     $p_email = $_SESSION['p_email'];
+    $patient_name_query = "SELECT name FROM patients WHERE email = '$p_email'";
+    $patient_name_result =  mysqli_query($connection, $patient_name_query);
+    if ($row = mysqli_fetch_assoc($patient_name_result)) {
+        $p_name = $row['name'];
+    }
 
     ?>
     <div class="dashboard-container">

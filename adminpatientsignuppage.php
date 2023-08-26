@@ -4,6 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Sign Up </title>
+    <style>
+        .top-head {
+        background-color: #10446bf3;
+        color: #fff;
+        padding: 20px;
+        margin: 0;
+        width: 100%
+        }
+        .flex-cont{
+            display: flex;
+            width: 90%;
+            flex-wrap: wrap;
+            align-content: space-between;
+
+        }
+        
+        h1{
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            align-content: space-between;
+            background-color: #6e7574;
+            padding: 10px;
+            margin: 0;
+            align: center;
+
+        } 
+        
+
+    </style>    
 </head>
 <body>
 
@@ -28,7 +58,9 @@
                                 </br>
 
                                 
-                                <h1> Patient's Info s</h1>
+                                <h1> Patient's Info </h1>
+                                </br>
+                                </br>
 
                                 <div class = form-center>
                                     <form action="adminpatientsignupconf.php" method="post">

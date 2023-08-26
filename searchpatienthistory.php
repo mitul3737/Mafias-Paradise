@@ -20,6 +20,52 @@ if (isset($_GET['patient_name'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Patient History </title>
+
+    <style>
+            table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color:#6e7574;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #cbd0c2;
+        }
+        tr:nth-child(odd) {
+            background-color: #cddab6;
+        }
+        button  {
+            background-color: #0b5f82;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        button:hover {
+            background-color: #194812;
+        }
+
+        .content-btn {
+        background-color: #97d989;
+        color: #fff;
+        font-size: 16px;
+        }
+
+    </style>    
 </head>
 <body>
     <h1> 📅 Appointment History for Patient: <?php echo $patient_name; ?></h1>
@@ -48,6 +94,7 @@ if (isset($_GET['patient_name'])) {
     }
     ?>
     <br>
-    <a href="doctordashboard.php">Go Back to Dashboard</a>
+    
+    <button type="button" class = "content-btn" > <a href="doctordashboard.php">Go Back to Dashboard</a> </button>
 </body>
 </html>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Dashboard</title>
     
-    <link rel="stylesheet" href="css/patientdashboarddesign.css">
+    <link rel="stylesheet" href="css/doctordashboarddesign.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
@@ -20,30 +20,29 @@
         exit;
     }
 
-    $d_name = $_SESSION['d_name'];//assign session variable to $d_name which will be used in other pages
-    $d_email = $_SESSION['d_email'];//assign session variable to $d_email which will be used in other pages
+    $d_name = $_SESSION['d_name'];
+    $d_email = $_SESSION['d_email'];
 
     $pending_appointments_query = "SELECT a.*, p.name AS patient_name FROM appointments a INNER JOIN patients p ON a.patient_email = p.email WHERE a.doctor_email = '$d_email' AND (a.appointment_status = 'pending' OR a.appointment_status = 'delayed') ORDER BY a.appointment_date asc";
-    //save all the pending appointments of the doctor in $pending_appointments_query
     $pending_appointments_result = mysqli_query($connection, $pending_appointments_query);
     ?>
     <div class="dashboard-container">
         <div class="sidebar">
             <h1> Navigation Bar </h1>
             <ul>
-                <li><button class="sidebar-button"><a href="patientdashboard.php"> 🗒️ Dashboard </a> </button></li>
-            
+                <li><button class="sidebar-button"><a href="doctordashboard.php"> 🗒️ Dashboard </a> </button></li>
+                
                 
                 
             </ul>
 
             <form action="doctorlogout.php" method="post" class="logout-form">
-                <input type="submit"  value="Log Out">//logout button
+                <input type="submit"  value="Log Out">
             </form>
         </div>
-        <div class="content">//content
+        <div class="content">
             <h1>
-                <?php echo "Welcome, " , $d_name, "!"; ?>//welcome message
+                <?php echo "Welcome, " , $d_name, "!"; ?>
     
             </h1>
 
@@ -67,7 +66,7 @@
                         echo "<td>" . $row['appointment_date'] . "</td>";
                         echo "<td>" . $row['prescription'] . "</td>";
                         echo "<td>" . $row['appointment_status'] . "</td>";
-                        echo '<td><a href="markcompleted.php?appointment_id=' . $row['patient_email'] . '">Mark Completed</a></td>';
+                        echo '<td><a href="markcompleted.php?appointment_p_email=' . $row['patient_email'] . '&appoint_slot_date=' . $row['slot_number'] . '">Mark Completed</a></td>';
                         echo "</tr>";
                     }
                     echo "</table>";

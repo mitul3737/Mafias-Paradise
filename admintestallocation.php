@@ -12,7 +12,7 @@
             padding: 0;
         }
         h1 {
-            background-color: #10446bf3;
+            background-color: #6e7574;
             color: #fff;
             padding: 20px;
             margin: 0;
@@ -80,7 +80,7 @@
     <form action="admintestallocationconf.php" method="post">
         <label for="patient_email">Patient Email:</label>
         <input type="text" name="patient_email" id="patient_email" required>
-        <br>
+        </br>
         <label for="test">Select Test:</label>
         <select name="test_id" id="test">
             <?php
@@ -89,12 +89,14 @@
             }
             ?>
         </select>
-        <br>
+        </br>
         <label for="test_date">Select Test Date:</label>
         <input type="date" name="test_date" id="test_date" required>
-        <br>
+        </br>
         <label for="slot_number">Select Slot Number:</label>
         <input type="number" name="slot_number" id="slot_number" required>
+        </br>
+        </br>
         <input type="submit" value="Book Test">
     </form>
 

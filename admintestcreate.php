@@ -12,7 +12,7 @@
             padding: 0;
         }
         h1 {
-            background-color: #10446bf3;
+            background-color: #6e7574;
             color: #fff;
             padding: 20px;
             margin: 0;

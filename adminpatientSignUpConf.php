@@ -9,13 +9,13 @@
 
     <?php
 
-        require_once('hospitaldb_connect.php');//connection request
+        require_once('hospitaldb_connect.php');
         session_start();
-        if (!isset($_SESSION['admin_id'])) {//if session variable is not set
+        if (!isset($_SESSION['admin_id'])) {
             header("Location: adminsigninpage.php");
             exit;
         }
-        if (isset($_POST['p_name']) && isset($_POST['p_email']) && isset($_POST['p_gender']) && isset($_POST['p_address']) && isset($_POST['p_phone']) && isset($_POST['p_pass']) && isset($_POST['p_height']) && isset($_POST['p_weight']) && isset($_POST['p_bg']) && isset($_POST['p_bp']))//if all the fields are filled (not empty) or null will also work as requried option given in form) {
+        if (isset($_POST['p_name']) && isset($_POST['p_email']) && isset($_POST['p_gender']) && isset($_POST['p_address']) && isset($_POST['p_phone']) && isset($_POST['p_pass']) && isset($_POST['p_height']) && isset($_POST['p_weight']) && isset($_POST['p_bg']) && isset($_POST['p_bp'])) { // the value can be both required and not required so it can be null
             $p_name = $_POST['p_name'];
             $p_email = $_POST['p_email'];
             $p_gender = $_POST['p_gender'];
@@ -27,14 +27,14 @@
             $p_bg = $_POST['p_bg'];
             $p_bp = $_POST['p_bp'];
 
-            $sql = "INSERT INTO patients VALUES ('$p_name', '$p_email', '$p_pass', '$p_gender', '$p_address', '$p_phone', '$p_weight', '$p_bg', '$p_bp', '$p_height')";//sql query which inserts all the values in the respective columns of the table
+            $sql = "INSERT INTO patients VALUES ('$p_name', '$p_email', '$p_pass', '$p_gender', '$p_address', '$p_phone', '$p_weight', '$p_bg', '$p_bp', '$p_height')";
 
-            $result = mysqli_query($connection, $sql);//connection request and query passing and sending to database
+            $result = mysqli_query($connection, $sql);
 
-            if (mysqli_affected_rows($connection)) {//if the query is passed and affected rows are returned
+            if (mysqli_affected_rows($connection)) { 
                 header("Location: admindashboard.php");
                 exit;
-            } else {//if the query is not passed
+            } else {
                 echo "Registration Failed!";
             }
 

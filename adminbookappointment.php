@@ -12,7 +12,7 @@
             padding: 0;
         }
         h1 {
-            background-color: #10446bf3;
+            background-color: #6e7574;
             color: #fff;
             padding: 20px;
             margin: 0;
@@ -72,29 +72,30 @@
         exit;
     }
 
-    $doctors_query = "SELECT email, name FROM doctors";//save name and email of all doctors in $doctors_query (we have multiple rows here)
-    $doctors_result = mysqli_query($connection, $doctors_query);//connection request and query passing
+    $doctors_query = "SELECT email, name FROM doctors";
+    $doctors_result = mysqli_query($connection, $doctors_query);
     ?>
 
-    <form action="adminbookappointmentconf.php" method="post">//form action is adminbookappointmentconf.php
+    <form action="adminbookappointmentconf.php" method="post">
         <label for="patient_email">Patient Email:</label>
         <input type="text" name="patient_email" id="patient_email" required>
-        <br>
+        </br>
         <label for="doctor">Select Doctor:</label>
-        <select name="doctor_email" id="doctor"> //select 1 doctor
+        <select name="doctor_email" id="doctor">
             <?php
-            while ($row = mysqli_fetch_assoc($doctors_result)) {  //fetches the name and email of the doctors from the doctors table
-                echo '<option value="' . $row['email'] . '">' . $row['name'] . '</option>';//shows the name of the doctors in the dropdown menu
+            while ($row = mysqli_fetch_assoc($doctors_result)) {
+                echo '<option value="' . $row['email'] . '">' . $row['name'] . '</option>';
             }
             ?>
         </select>
-        <br>
+        </br>
         <label for="appointment_date">Select Appointment Date:</label>
         <input type="date" name="appointment_date" id="appointment_date" required>
-        <br>
+        </br>
         <label for="slot_number">Select a Slot: </label>
         <input type="text" name="slot_number" id="slot_number" required>
-        <br>
+        </br>
+        </br>
         <input type="submit" value="Book Appointment">
     </form>
 </body>

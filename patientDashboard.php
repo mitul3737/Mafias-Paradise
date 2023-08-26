@@ -20,6 +20,11 @@
 
     $p_name = $_SESSION['p_name'];
     $p_email = $_SESSION['p_email'];
+    $patient_name_query = "SELECT name FROM patients WHERE email = '$p_email'";
+    $patient_name_result =  mysqli_query($connection, $patient_name_query);
+    if ($row = mysqli_fetch_assoc($patient_name_result)) {
+        $p_name = $row['name'];
+    }
     $appointments_query = "SELECT * FROM appointments WHERE patient_email = '$p_email' AND (appointment_status = 'pending' OR appointment_status = 'delayed') ORDER BY appointment_date asc";
     $appointments_result = mysqli_query($connection, $appointments_query);
     $reports_query = "SELECT bt.test_id, bt.slot_number, bt.booked_date, bt.test_report, bt.test_status FROM booked_tests bt WHERE bt.patient_email = '$p_email'";
