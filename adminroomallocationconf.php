@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Appointment</title>
+    <title>Document</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -61,39 +61,37 @@
     </style>
 </head>
 <body>
-    <h1>Book Appointment</h1>
 
     <?php
-    session_start();
-    require_once('hospitaldb_connect.php');
+        require_once('hospitaldb_connect.php');
+        session_start();
+        if (!isset($_SESSION['admin_id'])) {
+            header("Location: adminsigninpage.php");
+            exit;
+        }
+        if (isset($_POST['p_email']) && isset($_POST['room_no']) && isset($_POST['start_date']) && isset($_POST['end_date'])) {
+            $p_email = $_POST['p_email'];
+            $room_no = $_POST['room_no'];
+            $start_date = $_POST['start_date'];
+            $end_date = $_POST['end_date'];
 
-    if (!isset($_SESSION['p_name']) && !isset($_SESSION['p_email'])) {
-        header("Location: patientsigninpage.php");
-        exit;
-    }
+            $p_name_query = "SELECT name from patients where email = '$p_email'";
+            $p_name_result = mysqli_query($connection, $p_name_query);
+            $p_name = mysqli_fetch_assoc($p_name_result)['name'];
 
-    $doctors_query = "SELECT email, name FROM doctors";
-    $doctors_result = mysqli_query($connection, $doctors_query);
-    ?>
+            $sql = "INSERT INTO allocated_rooms VALUES ('$p_email', '$p_name', '$room_no', '$start_date', '$end_date')";
+            $sql_result = mysqli_query($connection, $sql);
 
-    <form action="processappointment.php" method="post">
-        <label for="doctor">Select Doctor:</label>
-        <select name="doctor_email" id="doctor">
-            <?php
-            while ($row = mysqli_fetch_assoc($doctors_result)) {
-                echo '<option value="' . $row['email'] . '">' . $row['name'] . '</option>';
+            if (mysqli_affected_rows($connection)) {
+                header("Location: admindashboard.php");
+                exit;
+            } else {
+                echo "Room Allocation Failed!";
             }
-            ?>
-        </select>
-        <br>
-        <label for="appointment_date">Select Appointment Date:</label>
-        <input type="date" name="appointment_date" id="appointment_date" required>
-        <br>
-        <label for="slot_number">Select a Slot: </label>
-        <input type="text" name="slot_number" id="slot_number" required>
-        <br>
-        <input type="submit" value="Book Appointment">
-        <button type = "button" class="back-btn"><a href="patientdashboard.php"> back to Dashboard </a> </button>
-    </form>
+
+        }
+
+    ?>
+    
 </body>
 </html>

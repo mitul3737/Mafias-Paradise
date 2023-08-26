@@ -57,8 +57,7 @@
             font-size: 12px;
             text-align: center;
         }
-
-    </style>
+    </style>    
 </head>
 <body>
     <h1>Book Test</h1>
@@ -77,8 +76,8 @@
     ?>
 
     <form action="processtest.php" method="post">
-        <label for="test" >Select Test:</label>
-        <select name="test_id" id="test"> <
+        <label for="test">Select Test:</label>
+        <select name="test_id" id="test"> <!-- id ="test" is the trigger -->
             <?php
             while ($row = mysqli_fetch_assoc($tests_result)) {
                 echo '<option value="' . $row['test_id'] . '">' . $row['test_name'] . '</option>';
@@ -91,7 +90,7 @@
         <br>
         <label for="slot_number">Select Slot Number:</label>
         <input type="number" name="slot_number" id="slot_number" required>
-        <p> </p>
+        <p></p>
         <input type="submit" value="Book Test">
         <button type = "button" class="back-btn"><a href="patientdashboard.php"> back to Dashboard </a> </button>
     </form>

@@ -1,0 +1,97 @@
+mysql -u root -p
+
+create database hospitalDB;
+
+use hospitalDB;
+
+
+// Tables
+
+
+create table patients (
+name varchar(30) not null,
+email varchar(30) not null,
+password varchar(20) not null, 
+gender varchar(10), 
+address varchar(80),
+phone_number varchar(15),
+weight int,
+blood_group varchar(6),
+blood_pressure varchar(25),
+height int,
+primary key (email)
+);
+
+create table doctors (
+name varchar(30) not null,
+email varchar(30) not null,
+password varchar(20) not null, 
+gender varchar(10), 
+address varchar(80),
+phone_number varchar(15),
+specialization varchar(30),
+designation varchar(30),
+department varchar(30),
+room_no varchar(10),
+primary key (email)
+);
+
+
+create table hospital_admins (
+admin_id varchar(15) not null,
+admin_pass varchar(50) not null,
+primary key(admin_id)
+);
+
+create table test (
+test_id int,
+test_type varchar(20),
+test_name varchar(30),
+primary key(test_id));
+
+create table booked_tests (
+test_id int, 
+patient_email varchar(30),
+slot_number int,
+booked_date date,
+test_report varchar(30),
+test_status varchar(10),
+primary key (patient_email),
+foreign key (patient_email) references patients(email)
+);
+
+
+create table rooms (
+room_number varchar(10),
+room_type varchar(15),
+primary key (room_number));
+
+
+create table admissions (
+patient_email varchar(30),
+room_number varchar(10),
+admission_date date,
+release_date date,
+primary key(patient_email),
+foreign key (patient_email) references patients(email),
+foreign key (room_number) references rooms(room_number)
+);
+
+
+create table appointments (
+patient_email varchar(30),
+doctor_email varchar(30),
+prescription varchar(500),
+slot_number int,
+appointment_type varchar(20),
+appointment_date date,
+appointment_status varchar(10),
+primary key(patient_email),
+foreign key (patient_email) references patients(email),
+foreign key (doctor_email) references doctors(email)
+);
+
+ALTER TABLE `appointments` DROP PRIMARY KEY, ADD PRIMARY KEY(`patient_email`, `doctor_email`);
+
+
+ALTER TABLE `booked_tests` DROP PRIMARY KEY, ADD PRIMARY KEY(`patient_email`, `slot_number`);

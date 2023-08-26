@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Patient Dashboard </title>
     <link rel="stylesheet" href="css/patientdashboarddesign.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     
 </head>
 <body>
@@ -149,6 +150,75 @@
                 }
                 ?>
             </div>
+            <h2> 🔎 Search Patient</h2>
+            <div class="col-md-8 col-lg-6">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="city" placeholder="Enter City" required>
+                </div>
+            </div>
+            <div>
+                <h2> 🩸 Tests & Reports Dashboard <button type="button" class = "content-btn"><a href="booktest.php"> Book Now </a> </button>  </h2>
+                <?php
+                if (mysqli_num_rows($reports_result) > 0) {
+                    echo '<table border="1">
+                        <tr>
+                            <th>Test ID</th>
+                            <th>Test Name</th>
+                            <th>Slot Number</th>
+                            <th>Booked Date</th>
+                            <th>Test Report</th>
+                            <th>Test Status</th>
+                        </tr>';
+                    while ($row = mysqli_fetch_assoc($reports_result)) {
+                        echo "<tr>";
+                        echo "<td>" . $row['test_id'] . "</td>";
+
+                        $t_id = $row['test_id'];
+                        $test_name_query = "SELECT test_name FROM test WHERE test_id = '$t_id'";
+                        $test_query = mysqli_query($connection, $test_name_query);
+                        $test_name = mysqli_fetch_assoc($test_query)['test_name'];
+                        echo "<td>" . $test_name . "</td>";
+                        echo "<td>" . $row['slot_number'] . "</td>";
+                        echo "<td>" . $row['booked_date'] . "</td>";
+                        echo "<td>" . $row['test_report'] . "</td>";
+                        echo "<td>" . $row['test_status'] . "</td>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                } else {
+                    echo "No Tests booked yet!!";
+                }
+                ?>
+            </div>
+
+            <br/>
+            <br/>
+
+            <div>
+                <h2>🏥 Rooms Allocated For You  </h2>
+                <br/>
+                <?php
+                if (mysqli_num_rows($room_result) > 0) {
+                    echo '<table border="1">
+                        <tr>
+                            <th>Room Number</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                        </tr>';
+                    while ($row = mysqli_fetch_assoc($room_result)) {
+                        echo "<tr>";
+                        echo "<td>" . $row['room_number'] . "</td>";
+                        echo "<td>" . $row['start_date'] . "</td>";
+                        echo "<td>" . $row['end_date'] . "</td>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                } else {
+                    echo "No rooms booked for you yet!!";
+                }
+                ?>
+            
+
         </div>
     </div>
 

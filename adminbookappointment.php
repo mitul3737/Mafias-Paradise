@@ -67,8 +67,8 @@
     session_start();
     require_once('hospitaldb_connect.php');
 
-    if (!isset($_SESSION['p_name']) && !isset($_SESSION['p_email'])) {
-        header("Location: patientsigninpage.php");
+    if (!isset($_SESSION['admin_id'])) {
+        header("Location: admindashboard.php");
         exit;
     }
 
@@ -76,7 +76,10 @@
     $doctors_result = mysqli_query($connection, $doctors_query);
     ?>
 
-    <form action="processappointment.php" method="post">
+    <form action="adminbookappointmentconf.php" method="post">
+        <label for="patient_email">Patient Email:</label>
+        <input type="text" name="patient_email" id="patient_email" required>
+        <br>
         <label for="doctor">Select Doctor:</label>
         <select name="doctor_email" id="doctor">
             <?php
@@ -93,7 +96,6 @@
         <input type="text" name="slot_number" id="slot_number" required>
         <br>
         <input type="submit" value="Book Appointment">
-        <button type = "button" class="back-btn"><a href="patientdashboard.php"> back to Dashboard </a> </button>
     </form>
 </body>
 </html>

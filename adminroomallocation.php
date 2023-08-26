@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Appointment</title>
-    <style>
+    <title> Room Allocation </title>
+     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -61,39 +61,29 @@
     </style>
 </head>
 <body>
-    <h1>Book Appointment</h1>
-
+    <h1> Room Allocation </h1>
     <?php
     session_start();
     require_once('hospitaldb_connect.php');
-
-    if (!isset($_SESSION['p_name']) && !isset($_SESSION['p_email'])) {
-        header("Location: patientsigninpage.php");
+    
+    if (!isset($_SESSION['admin_id'])) {
+        header("Location: admindashboard.php");
         exit;
     }
 
-    $doctors_query = "SELECT email, name FROM doctors";
-    $doctors_result = mysqli_query($connection, $doctors_query);
-    ?>
+    $admin_id = $_SESSION['admin_id'];
 
-    <form action="processappointment.php" method="post">
-        <label for="doctor">Select Doctor:</label>
-        <select name="doctor_email" id="doctor">
-            <?php
-            while ($row = mysqli_fetch_assoc($doctors_result)) {
-                echo '<option value="' . $row['email'] . '">' . $row['name'] . '</option>';
-            }
-            ?>
-        </select>
-        <br>
-        <label for="appointment_date">Select Appointment Date:</label>
-        <input type="date" name="appointment_date" id="appointment_date" required>
-        <br>
-        <label for="slot_number">Select a Slot: </label>
-        <input type="text" name="slot_number" id="slot_number" required>
-        <br>
-        <input type="submit" value="Book Appointment">
-        <button type = "button" class="back-btn"><a href="patientdashboard.php"> back to Dashboard </a> </button>
-    </form>
+   ?>
+
+    <form action="adminroomallocationconf.php" method="post">
+            Patient Email: <input type="text" name = "p_email" required> <br/>
+            Room Number: <input type="text" name = "room_no" required> <br/>
+            Start Date: <input type="date" name = "start_date" required> <br/>
+            End Date: <input type="date" name = "end_date" required> <br/>
+            <br/>
+            <input type="submit" value="Register">
+
+    </form>            
+
 </body>
 </html>
