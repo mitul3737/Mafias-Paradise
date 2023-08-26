@@ -25,7 +25,7 @@
             width: 123%;
             flex-wrap: wrap;
             align-content: space-between;
-            background-color: white;
+            background-color: #6e7574;
            
             padding: 10px;
             margin: 0;
