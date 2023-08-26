@@ -22,15 +22,15 @@
         <h1> ADMIN DASHBOARD </h1>
     </div>
     <?php
-    session_start();
-    require_once('hospitaldb_connect.php');
+    session_start(); //session continued
+    require_once('hospitaldb_connect.php');//connection request
     
-    if (!isset($_SESSION['admin_id'])) {
-        header("Location: adminsigninpage.php");
+    if (!isset($_SESSION['admin_id'])) {//if session variable is not set
+        header("Location: adminsigninpage.php");//redirect to adminsigninpage.php
         exit;
     }
 
-    $admin_id = $_SESSION['admin_id'];
+    $admin_id = $_SESSION['admin_id'];//assign session variable to $admin_id which will be used in other pages
 
    ?>
    <div class="dashboard-container">

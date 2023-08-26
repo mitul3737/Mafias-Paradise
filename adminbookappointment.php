@@ -72,19 +72,19 @@
         exit;
     }
 
-    $doctors_query = "SELECT email, name FROM doctors";
-    $doctors_result = mysqli_query($connection, $doctors_query);
+    $doctors_query = "SELECT email, name FROM doctors";//save name and email of all doctors in $doctors_query (we have multiple rows here)
+    $doctors_result = mysqli_query($connection, $doctors_query);//connection request and query passing
     ?>
 
-    <form action="adminbookappointmentconf.php" method="post">
+    <form action="adminbookappointmentconf.php" method="post">//form action is adminbookappointmentconf.php
         <label for="patient_email">Patient Email:</label>
         <input type="text" name="patient_email" id="patient_email" required>
         <br>
         <label for="doctor">Select Doctor:</label>
-        <select name="doctor_email" id="doctor">
+        <select name="doctor_email" id="doctor"> //select 1 doctor
             <?php
-            while ($row = mysqli_fetch_assoc($doctors_result)) {
-                echo '<option value="' . $row['email'] . '">' . $row['name'] . '</option>';
+            while ($row = mysqli_fetch_assoc($doctors_result)) {  //fetches the name and email of the doctors from the doctors table
+                echo '<option value="' . $row['email'] . '">' . $row['name'] . '</option>';//shows the name of the doctors in the dropdown menu
             }
             ?>
         </select>

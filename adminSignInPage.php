@@ -27,7 +27,7 @@
                                     </br>
                                     
                                     <div class = form-center>
-                                        <form action="adminsigninconf.php" method="post">
+                                        <form action="adminsigninconf.php" method="post"> 
                                         <div class="form-group">
                                             <input type="text" name="admin_id" class ="form-control" placeholder="Your email*" required> <br/>
                                         </div>

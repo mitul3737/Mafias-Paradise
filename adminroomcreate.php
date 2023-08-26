@@ -66,17 +66,17 @@
     session_start();
     require_once('hospitaldb_connect.php');
     
-    if (!isset($_SESSION['admin_id'])) {
+    if (!isset($_SESSION['admin_id'])) {//if session variable is not set
         header("Location: admindashboard.php");
         exit;
     }
 
-    $admin_id = $_SESSION['admin_id'];
+    $admin_id = $_SESSION['admin_id'];  //assign session variable to $admin_id which will be used in other pages
 
    ?>
 
-    <form action="adminroomcreateconf.php" method="post">
-        Room Type: <input type="text" name = "room_type" required> <br/>
+    <form action="adminroomcreateconf.php" method="post">//form action to adminroomcreateconf.php (creating a form to take input from user and send it to adminroomcreateconf.php)
+        Room Type: <input type="text" name = "room_type" required> <br/>//input field to take room type and save to name's room_type
         Room Number: <input type="text" name = "room_no" required> <br/>
         <br/>
         <input type="submit" value="Register">

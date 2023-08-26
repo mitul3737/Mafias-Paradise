@@ -20,10 +20,11 @@
         exit;
     }
 
-    $d_name = $_SESSION['d_name'];
-    $d_email = $_SESSION['d_email'];
+    $d_name = $_SESSION['d_name'];//assign session variable to $d_name which will be used in other pages
+    $d_email = $_SESSION['d_email'];//assign session variable to $d_email which will be used in other pages
 
     $pending_appointments_query = "SELECT a.*, p.name AS patient_name FROM appointments a INNER JOIN patients p ON a.patient_email = p.email WHERE a.doctor_email = '$d_email' AND (a.appointment_status = 'pending' OR a.appointment_status = 'delayed') ORDER BY a.appointment_date asc";
+    //save all the pending appointments of the doctor in $pending_appointments_query
     $pending_appointments_result = mysqli_query($connection, $pending_appointments_query);
     ?>
     <div class="dashboard-container">
@@ -31,18 +32,18 @@
             <h1> Navigation Bar </h1>
             <ul>
                 <li><button class="sidebar-button"><a href="patientdashboard.php"> 🗒️ Dashboard </a> </button></li>
-                <li><button class="sidebar-button"><a href="patienteditprofile.php"> 📝 Edit Profile </a> </button></li>
+            
                 
                 
             </ul>
 
             <form action="doctorlogout.php" method="post" class="logout-form">
-                <input type="submit"  value="Log Out">
+                <input type="submit"  value="Log Out">//logout button
             </form>
         </div>
-        <div class="content">
+        <div class="content">//content
             <h1>
-                <?php echo "Welcome, " , $d_name, "!"; ?>
+                <?php echo "Welcome, " , $d_name, "!"; ?>//welcome message
     
             </h1>
 

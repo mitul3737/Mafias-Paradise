@@ -75,12 +75,12 @@
             $start_date = $_POST['start_date'];
             $end_date = $_POST['end_date'];
 
-            $p_name_query = "SELECT name from patients where email = '$p_email'";
-            $p_name_result = mysqli_query($connection, $p_name_query);
-            $p_name = mysqli_fetch_assoc($p_name_result)['name'];
+            $p_name_query = "SELECT name from patients where email = '$p_email'";//sql query which selects name from patients table where email is equal to $p_email
+            $p_name_result = mysqli_query($connection, $p_name_query);//connection request and query passing and sending to database
+            $p_name = mysqli_fetch_assoc($p_name_result)['name'];//fetches the name of the patient from the patients table
 
-            $sql = "INSERT INTO allocated_rooms VALUES ('$p_email', '$p_name', '$room_no', '$start_date', '$end_date')";
-            $sql_result = mysqli_query($connection, $sql);
+            $sql = "INSERT INTO allocated_rooms VALUES ('$p_email', '$p_name', '$room_no', '$start_date', '$end_date')";//sql query which inserts all the values in the respective columns of the table
+            $sql_result = mysqli_query($connection, $sql);//connection request and query passing and sending to database
 
             if (mysqli_affected_rows($connection)) {
                 header("Location: admindashboard.php");
